@@ -18,6 +18,9 @@ gem 'dotenv-rails'
 # Use for Devise Authentication
 gem 'devise'
 
+# Use for Devise JWT
+gem 'devise-jwt'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
