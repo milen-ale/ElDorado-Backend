@@ -1,4 +1,4 @@
-class Api::V1::CurrentUsersController < Api::V1::ApplicationController
+class Api::V1::UsersController < Api::V1::ApplicationController
   before_action :authenticate_user!
 
   def index
