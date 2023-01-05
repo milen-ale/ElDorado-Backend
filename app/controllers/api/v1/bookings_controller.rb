@@ -1,4 +1,4 @@
-class Api::V1::BookingsController < Api::V1::ApplicationController
+class Api::V1::BookingsController < ApplicationController
   def index; end
 
   def create; end
