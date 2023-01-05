@@ -21,16 +21,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_193644) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cars", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
-    t.string "model"
-    t.float "daily_price"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
