@@ -17,8 +17,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_193644) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "pickup_date"
     t.datetime "return_date"
+    t.bigint "user_id", null: false
+    t.bigint "car_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_bookings_on_car_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -46,4 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_193644) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "cars", on_delete: :cascade
+  add_foreign_key "bookings", "users", on_delete: :cascade
 end
