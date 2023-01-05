@@ -10,8 +10,4 @@ class User < ApplicationRecord
 
   # has_many :cars, dependent: :destroy
   # has_many :bookings, dependent: :destroy
-
-  def jwt_payload
-    super
-  end
 end
