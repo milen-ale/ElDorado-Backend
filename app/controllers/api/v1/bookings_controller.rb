@@ -16,7 +16,6 @@ class Api::V1::BookingsController < ApplicationController
 
   def destroy
     booking = Booking.find(params[:id])
-    booking.destroy
 
     if booking.destroy
       render json: { message: 'Booking successfully canceled' }, status: :ok
