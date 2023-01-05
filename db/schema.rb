@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_193644) do
     t.string "name"
     t.string "image"
     t.string "model"
-    t.integer "daily_price"
+    t.float "daily_price"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
