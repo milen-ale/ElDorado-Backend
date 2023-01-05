@@ -20,9 +20,8 @@ Rails.application.routes.draw do
   # API routes
   namespace :api do
     namespace :v1 do
-      resources :current_users, only: [:index]
-      resources :users, only: [:index, :show] do
-        resources :bookings, only: [:index, :show]
+      resources :users, only: [:index] do
+        resources :bookings, only: [:index, :create],:path => 'reservations'
       end
       resources :cars, only: [:index, :show]
     end
