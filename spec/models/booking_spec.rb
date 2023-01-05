@@ -19,34 +19,47 @@ RSpec.describe Booking, type: :model do
       expect(@booking).to be_valid
     end
 
-    it 'is not valid without a pickup date' do
+    it 'is invalid without a pickup date' do
       @booking.pickup_date = nil
       @booking.save
       expect(@booking).to_not be_valid
     end
 
-    it 'is not valid without a return date' do
+    it 'is invalid without a return date' do
       @booking.return_date = nil
       @booking.save
       expect(@booking).to_not be_valid
     end
 
-    it 'is not valid without password' do
-      @booking.password = nil
+    it 'is invalid for a pickup date before the current date' do
+      @booking.pickup_date = '2000-01-05'
+      @booking.save
+      expect(@booking).to_not be_valid
+    end
+
+    it 'is invalid for the same pickup & return date' do
+      @booking.pickup_date = '2023-01-05'
+      @booking.return_date = '2023-01-05'
+      @booking.save
+      expect(@booking).to_not be_valid
+    end
+
+    it 'is invalid for the pickup date to be the same as current date' do
+      @booking.return_date = Date.today
       @booking.save
       expect(@booking).to_not be_valid
     end
   end
 
-  # context 'Testing Associations' do
-  #   it 'has_many groups/categories' do
-  #     assoc = booking.reflect_on_association(:bookings)
-  #     expect(assoc.macro).to eq :has_many
-  #   end
+  context 'Testing Associations' do
+    it 'belongs_to a user' do
+      assoc = Booking.reflect_on_association(:user)
+      expect(assoc.macro).to eq :belongs_to
+    end
 
-  #   it 'has_many expenses/transactions' do
-  #     assoc = booking.reflect_on_association(:cars)
-  #     expect(assoc.macro).to eq :has_many
-  #   end
+    it 'belongs_to a car' do
+      assoc = Booking.reflect_on_association(:car)
+      expect(assoc.macro).to eq :belongs_to
+    end
   end
 end
