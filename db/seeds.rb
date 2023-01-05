@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-cars =Car.create([
+cars = Car.create([
   {
     name: 'Range Rover',
     image: 'https://www.landroverusa.com/content/dam/landroverusa/vehicles/range-rover/2021/overview/overview-2021-range-rover-01.jpg',
@@ -169,11 +169,4 @@ cars =Car.create([
     description: 'The Mercedes-Benz GLS-Class is a full-size luxury SUV produced by the German automaker Mercedes-Benz since 2006. The first generation (X164) was launched in 2006 as the successor to the Mercedes-Benz GL-Class (X164).'
   }
 ])
-=======
-Car.create(
-  name: 'BMW 3 Series',
-  image: 'https://www.bmw.com/content/dam/bmw/common/all-models/3-series/sedan/2021/navigation/BMW-3-Series-Sedan-2021-Exterior-01.jpg/_jcr_content/renditions/cq5dam.resized.img.585.low.time1594732800000.jpg',
-  model: '2021',
-  daily_price: 150,
-  description: 'The BMW 3 Series is a compact executive car manufactured by the German automaker BMW since May 1975. It is the successor to the 02 Series and has been produced in six different generations.'
-)
+
