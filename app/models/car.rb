@@ -9,5 +9,5 @@ class Car < ApplicationRecord
   validates :model, presence: true, length: { minimum: MIN_NUM, maximum: MAX_LENGTH }
   validates :image, presence: true, length: { minimum: MIN_NUM }
   validates :Daily_Price, presence: true,
-                                   numericality: { greater_than_or_equal_to: MIN_NUM, less_than_or_equal_to: MAX_NUM }
+                          numericality: { greater_than_or_equal_to: MIN_NUM, less_than_or_equal_to: MAX_NUM }
 end
