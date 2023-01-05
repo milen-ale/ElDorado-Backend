@@ -1,13 +1,10 @@
 class Car < ApplicationRecord
-  has_many :booking, dependent: :destroy
+  has_many :bookings, dependent: :destroy
+  has_many :user, through: :bookings
 
-  MAX_LENGTH = 250
-  MIN_NUM = 1
-
-  validates :name, presence: true, length: { minimum: MIN_NUM, maximum: MAX_LENGTH }
-  validates :model, presence: true, length: { minimum: MIN_NUM, maximum: MAX_LENGTH }
-  validates :description, presence: true, length: { minimum: MIN_NUM }
-  validates :image, presence: true, length: { minimum: MIN_NUM }
-  validates :daily_price, presence: true,
-                          numericality: { greater_than_or_equal_to: MIN_NUM }
+  validates :name, presence: true, length: { in: 1..250 }
+  validates :model, presence: true, length: { in: 1..250 }
+  validates :image, presence: true, length: { in: 1..250 }
+  validates :daily_price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :description, presence: true, length: { in: 1..500 }
 end
