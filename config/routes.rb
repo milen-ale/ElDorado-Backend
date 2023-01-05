@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index] do
-        resources :bookings, only: [:index, :create],:path => 'reservations'
+        resources :bookings, only: [:index, :create, :destroy],:path => 'reservations'
       end
       resources :cars, only: [:index, :show]
     end
