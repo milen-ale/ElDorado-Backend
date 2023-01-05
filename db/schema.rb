@@ -50,6 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_193644) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "cars", on_delete: :cascade
-  add_foreign_key "bookings", "users", on_delete: :cascade
+  add_foreign_key "bookings", "cars"
+  add_foreign_key "bookings", "users"
 end
