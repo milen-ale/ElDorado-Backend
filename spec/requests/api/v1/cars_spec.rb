@@ -7,7 +7,7 @@ RSpec.describe 'api/v1/cars', type: :request do
       tags 'List All Cars'
       produces 'application/json'
       
-      response '200', 'Current User found' do
+      response '200', 'List of cars found' do
         before do
           @cars = Car.create([
             {
