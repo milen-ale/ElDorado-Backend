@@ -33,7 +33,7 @@ RSpec.describe 'api/v1/reservations', type: :request do
                       name: { type: :string },
                       image: { type: :string },
                       model: { type: :string },
-                      daily_price: { type: :integer },
+                      daily_price: { type: :decimal },
                       description: { type: :string }
                     },
                     required: ['id', 'name', 'image', 'model', 'daily_price', 'description']
