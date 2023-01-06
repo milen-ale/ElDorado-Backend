@@ -11,16 +11,15 @@ RSpec.describe 'api/v1/login', type: :request do
           email: { type: :string },
           password: { type: :string }
         },
-        required: ['email', 'password']
+        required: %w[email password]
       }
 
-      
-      
       response '200', 'User logged in successfully' do
         before do
-          User.create(name: 'Obi Wan', email: 'obiwan@jedi.com', password: 'password', password_confirmation: 'password')
+          User.create(name: 'Obi Wan', email: 'obiwan@jedi.com', password: 'password',
+                      password_confirmation: 'password')
         end
-        let(:user) { { user: { email: 'obiwan@jedi.com', password: 'password'} } }
+        let(:user) { { user: { email: 'obiwan@jedi.com', password: 'password' } } }
         run_test!
       end
 

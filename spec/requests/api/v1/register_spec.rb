@@ -13,11 +13,14 @@ RSpec.describe 'api/v1/register', type: :request do
           password: { type: :string },
           password_confirmation: { type: :string }
         },
-        required: ['name', 'email', 'password', 'password_confirmation']
+        required: %w[name email password password_confirmation]
       }
-      
+
       response '200', 'User registered successfully' do
-        let(:user) { { user: { name: 'Obi Wan', email: 'obiwan@jedi.com', password: 'password', password_confirmation: 'password' } } }
+        let(:user) do
+          { user: { name: 'Obi Wan', email: 'obiwan@jedi.com', password: 'password',
+                    password_confirmation: 'password' } }
+        end
         run_test!
       end
 
