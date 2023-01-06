@@ -12,7 +12,8 @@ RSpec.describe 'api/v1/reservations', type: :request do
           @user = User.create(name: 'Abel G', email: 'abelg@jedi.com', password: 'password',
                               password_confirmation: 'password')
           @car = Car.create(name: 'Toyota',
-                            image: 'https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2020/camry/01.png?auto=format%2Ccompress&fit=crop&h=400&w=800', model: 'Camry', daily_price: 100, description: 'A nice car')
+                            image: 'https://www.toyota.com/imgix/responsive/images/toyota.png',
+                            model: 'Camry', daily_price: 100, description: 'A nice car')
           pickup_date = Time.now
           return_date = pickup_date + 5.day
           @reservation = Booking.create(user: @user, car: @car, pickup_date:, return_date:)
@@ -71,7 +72,8 @@ RSpec.describe 'api/v1/reservations', type: :request do
           @user = User.create(name: 'Abel G', email: 'abelg@jedi.com', password: 'password',
                               password_confirmation: 'password')
           @car = Car.create(name: 'Toyota',
-                            image: 'https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2020/camry/01.png?auto=format%2Ccompress&fit=crop&h=400&w=800', model: 'Camry', daily_price: 100, description: 'A nice car')
+                            image: 'https://www.toyota.com/imgix/responsive/images/toyota.png',
+                            model: 'Camry', daily_price: 100, description: 'A nice car')
           @pickup_date = Time.now + 1.day
           @return_date = @pickup_date + 7.day
           sign_in @user
@@ -101,7 +103,8 @@ RSpec.describe 'api/v1/reservations', type: :request do
           @user = User.create(name: 'Abel G', email: 'abelg@jedi.com', password: 'password',
                               password_confirmation: 'password')
           @car = Car.create(name: 'Toyota',
-                            image: 'https://www.toyota.com/imgix/responsive/images/mlp/colorizer/2020/camry/01.png?auto=format%2Ccompress&fit=crop&h=400&w=800', model: 'Camry', daily_price: 100, description: 'A nice car')
+                            image: 'https://www.toyota.com/imgix/responsive/images/toyota.png',
+                            model: 'Camry', daily_price: 100, description: 'A nice car')
           pickup_date = Time.now + 1.day
           return_date = pickup_date + 5.day
           @reservation = Booking.create!(user: @user, car: @car, pickup_date:, return_date:)
