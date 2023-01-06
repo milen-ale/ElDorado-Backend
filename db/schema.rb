@@ -15,10 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_193644) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "pickup_date"
-    t.datetime "return_date"
     t.bigint "user_id", null: false
     t.bigint "car_id", null: false
+    t.datetime "pickup_date"
+    t.datetime "return_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_bookings_on_car_id"
