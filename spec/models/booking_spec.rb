@@ -8,7 +8,7 @@ RSpec.describe Booking, type: :model do
                   model: '2021',
                   daily_price: 150,
                   description: 'The BMW 3 Series is a compact executive car.')
-    @booking = Booking.new(pickup_date: '2023-01-05', return_date: '2023-01-08')
+    @booking = Booking.new(pickup_date: Date.today, return_date: Date.today + 4.day)
     @booking.car = car
     @booking.user = user
   end
