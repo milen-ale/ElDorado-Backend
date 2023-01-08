@@ -104,7 +104,7 @@ After you're finished please remove all the comments and instructions!
 ## <img src="https://emojipedia-us.s3.amazonaws.com/source/microsoft-teams/337/spiral-notepad_1f5d2-fe0f.png" width="23" height="20"/> API Documentation<a name="api-docs"></a>
 
 - Here is the API documentation of the project [El Dorado API-Docs](https://eldorado.onrender.com/api-docs/)
-![](https://user-images.githubusercontent.com/84629565/202665566-ba1a8ed3-041f-45bc-b21b-efdcc357189b.png)
+![api-docs](https://user-images.githubusercontent.com/84629565/211194455-b4f6c3ca-cd8e-4477-b2dd-669440442864.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -161,6 +161,11 @@ To run the project, execute the following command:
 
 ```sh
    rails s -p 3001 # # for serving the API on localhost:3001
+```
+
+Run tests
+```
+bundle exec rspec
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -236,14 +241,17 @@ I would like to thank:
 
 ## ❓ FAQ <a name="faq"></a>
 
-- **[Question_1]**
+- **How I can install rails?**
 
-  - [Answer_1]
+  - You can follow the [official guide](https://guides.rubyonrails.org/getting_started.html#installing-rails) to install rails. If you have gem installed, you can run `gem install rails` to install rails.
 
-- **[Question_2]**
+- **How I can run this project?**
 
-  - [Answer_2]
+  - After cloning repository, run `bundle` and then run `rails s` with option argument `-p 3001`. This will run the server on `localhost:3001`. You can change the port number if you want. Then you can use any API client to test the endpoints. For example, you can use [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/). You can also use the [API Documentation](https://eldorado.onrender.com/api-docs/) to test the endpoints. 
 
+- **How I can run tests?**
+  
+    - After cloning repository, run `bundle` and then run `rspec` to run the tests. 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
