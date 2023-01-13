@@ -40,7 +40,7 @@ class Api::V1::CarsController < ApplicationController
           data: CarSerializer.new(@car)
         }, status: :ok
       else
-        render json:{ error: 'ERROR: Unable to create the car' } , status: :unprocessable_entity
+        render json: { error: 'ERROR: Unable to create the car' }, status: :unprocessable_entity
       end
     else
       render json: { errors: 'You are not authorized to updated this car.' }, status: :unauthorized
