@@ -47,7 +47,16 @@ class Api::V1::CarsController < ApplicationController
     end
   end
 
-  private
+  def availability
+    if @car.user == current_user
+      @car.update(car_availability_params)
+      car_available? ? render_available : render_unavailable
+
+    else
+      render json: { errors: 'You are not authorized to updated this car.' }, status: :unauthorized
+    end
+  end
+ private
 
   def set_car
     @car = Car.find(params[:id])
