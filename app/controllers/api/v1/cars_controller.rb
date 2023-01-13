@@ -28,7 +28,26 @@ class Api::V1::CarsController < ApplicationController
       render json: { error: 'ERROR: Unable to create the car' }, status: :unprocessable_entity
     end
   end
- private
+
+  def update
+    @car = Car.find(params[:id])
+    if @car.user == current_user
+
+      if @car.update!(car_params)
+        render json: {
+          status: 200,
+          message: 'Car has been successfully updated.',
+          data: CarSerializer.new(@car)
+        }, status: :ok
+      else
+        render json:{ error: 'ERROR: Unable to create the car' } , status: :unprocessable_entity
+      end
+    else
+      render json: { errors: 'You are not authorized to updated this car.' }, status: :unauthorized
+    end
+  end
+
+  private
 
   def set_car
     @car = Car.find(params[:id])
@@ -39,5 +58,4 @@ class Api::V1::CarsController < ApplicationController
       .permit(:name, :model, :image, :daily_price, :description, :available)
       .with_defaults(user_id: current_user.id)
   end
-
 end
