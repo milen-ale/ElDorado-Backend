@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       resources :users, only: [:index] do
         resources :bookings, only: [:index, :create, :destroy],:path => 'reservations'
       end
+      resources :users, only: [:index] do
+        resources :cars, only: [:create, :update]
+        patch 'cars/:id/availability', to: 'cars#availability', as: 'car_availability'
+      end
+      get '/users/:user_id/cars', to: 'cars#owner_cars', as: 'owner_cars'
       resources :cars, only: [:index, :show]
     end
   end
