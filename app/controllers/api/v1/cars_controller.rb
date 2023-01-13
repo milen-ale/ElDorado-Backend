@@ -88,4 +88,10 @@ class Api::V1::CarsController < ApplicationController
   def car_available?
     @car.available
   end
+
+  def car_availability_params
+    params.require(:car)
+      .permit(:available)
+      .with_defaults(user_id: current_user.id)
+  end
 end
