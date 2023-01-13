@@ -56,7 +56,15 @@ class Api::V1::CarsController < ApplicationController
       render json: { errors: 'You are not authorized to updated this car.' }, status: :unauthorized
     end
   end
- private
+
+  def render_available
+    render json: {
+      status: 200,
+      message: 'Car has been successfully marked as available.',
+      data: CarSerializer.new(@car)
+    }, status: :ok
+  end
+  private
 
   def set_car
     @car = Car.find(params[:id])
