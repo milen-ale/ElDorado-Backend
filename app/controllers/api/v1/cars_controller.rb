@@ -8,7 +8,7 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def owner_cars
-    @owner_cars = Car.where(user: current_user)
+    @owner_cars = current_user.owner_cars
     render json: @owner_cars, status: :ok
   end
 
@@ -49,9 +49,11 @@ class Api::V1::CarsController < ApplicationController
 
   def availability
     if @car.user == current_user
-      @car.update(car_availability_params)
-      car_available? ? render_available : render_unavailable
-
+      if @car.update!(car_availability_params)
+        car_available? ? render_available : render_unavailable
+      else
+        render json: { error: 'ERROR: Unable to update the car' }, status: :unprocessable_entity
+      end
     else
       render json: { errors: 'You are not authorized to updated this car.' }, status: :unauthorized
     end
