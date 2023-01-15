@@ -10,7 +10,8 @@ class Api::V1::BookingsController < ApplicationController
     if booking.car.user == current_user
       render json: {
         status: 422,
-        error: 'ERROR: You cannot book your own car'
+        error: 'ERROR: User cannot book their own car',
+        message: 'You cannot book your own car'
       }, status: :unprocessable_entity
     elsif booking.save!
       render json: {
