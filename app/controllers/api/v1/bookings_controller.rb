@@ -2,12 +2,17 @@ class Api::V1::BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: current_user.bookings.order(id: :desc), status: :ok
+    render json: current_user.bookings.includes([:car]).order(id: :desc), status: :ok
   end
 
   def create
     booking = Booking.new(booking_params)
-    if booking.save!
+    if booking.car.user == current_user
+      render json: {
+        status: 422,
+        error: 'ERROR: You cannot book your own car'
+      }, status: :unprocessable_entity
+    elsif booking.save!
       render json: {
         status: 201,
         message: 'Car has been successfully booked',
