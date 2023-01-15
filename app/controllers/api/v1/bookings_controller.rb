@@ -7,20 +7,14 @@ class Api::V1::BookingsController < ApplicationController
 
   def create
     booking = Booking.new(booking_params)
-    if booking.car.user == current_user
-      render json: {
-        status: 422,
-        error: 'ERROR: User cannot book their own car',
-        message: 'You cannot book your own car'
-      }, status: :unprocessable_entity
-    elsif booking.save!
+    if booking.save!
       render json: {
         status: 201,
         message: 'Car has been successfully booked',
         data: BookingSerializer.new(booking)
       }, status: :created
     else
-      render json: { error: 'ERROR: Unable to book the car' }, status: :unprocessable_entity
+      render json: { error: booking.errors.full_massages }, status: :unprocessable_entity
     end
   end
 
