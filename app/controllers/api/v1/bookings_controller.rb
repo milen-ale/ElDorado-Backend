@@ -14,7 +14,7 @@ class Api::V1::BookingsController < ApplicationController
         data: BookingSerializer.new(booking)
       }, status: :created
     else
-      render json: { error: booking.errors.full_massages }, status: :unprocessable_entity
+      render json: { error: booking.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
