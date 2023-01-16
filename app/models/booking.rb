@@ -5,8 +5,12 @@ class Booking < ApplicationRecord
   validates :car_id, presence: true, uniqueness: { scope: :user_id, message: 'You have already booked this car' }
   validates :user_id, presence: true
   validates :return_date, comparison: { greater_than: :pickup_date }
-  validates :pickup_date, presence: true, comparison: { greater_than_or_equal_to: Date.today }
-  validates :return_date, presence: true, comparison: { greater_than: Date.today }
+  validates :pickup_date, presence: true,
+                          comparison: { greater_than_or_equal_to: Date.today,
+                                        message: 'Pickup date must be today or later' }
+  validates :return_date, presence: true,
+                          comparison: { greater_than: Date.today + 1.day,
+                                        message: 'Return date must be at least 1 day after pickup date' }
 
   validate :car_not_owned_by_user
   validate :car_not_found
